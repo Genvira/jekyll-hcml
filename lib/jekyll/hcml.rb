@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative "hcml/converter"
+require_relative "hcml/include-tag"
 require_relative "hcml/version"
 
 require "open3"
