@@ -1,35 +1,13 @@
 # frozen_string_literal: true
 
+require_relative "hcml/converter"
 require_relative "hcml/version"
 
 require "open3"
 
 module Jekyll
-  # module Hcml
-  #   class Error < StandardError; end
-  #   # Your code goes here...
-  # end
-
-  class HcmlConverter < Converter
-    safe true
-    priority :low
-
-    def matches(ext)
-      ext =~ /^\.hcml$/i
-    end
-
-    def output_ext(ext)
-      ".html"
-    end
-
-    def convert(content)
-      # puts "Content: #{content}"
-      # result = `hcml -`
-      # puts "Result: #{result}"
-      # result
-
-      Jekyll.logger.info "Converting HCML to HTML:"
-
+  module Hcml
+    def self.hcml2html(content)
       stdout, stderr, status = Open3.capture3("hcml -", stdin_data: content)
 
       # Print stderr if it is not empty
