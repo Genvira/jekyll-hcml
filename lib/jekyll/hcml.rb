@@ -39,6 +39,7 @@ module Jekyll
 
       # If the command failed, raise an error.
       unless status.success?
+        Jekyll.logger.info "Failed to convert: #{content}"
         raise status.to_s
       end
 
